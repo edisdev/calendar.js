@@ -1,5 +1,5 @@
 {
-  "name": "calendar.js",
+  "name": "calendar-data-js",
   "version": "1.0.0",
   "description": "For generate calendar Data",
   "main": "calendar.js",
@@ -14,7 +14,7 @@
     "calendar",
     "javascript",
     "datepicker",
-    "calendar.js"
+    "calendar data"
   ],
   "author": "edisdev <hedis285@gmail.com>",
   "license": "MIT",
