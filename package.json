@@ -1,5 +1,5 @@
 {
-  "name": "calendar-data-js",
+  "name": "calendar-data-generate",
   "version": "1.0.0",
   "description": "For generate calendar Data",
   "main": "calendar.js",
