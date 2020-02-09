@@ -4,7 +4,7 @@ Generate calendar data with javascript 📅
 ## Using
 ```javascript
 
-import Calendar form 'calendar-data-js'
+import Calendar form 'calendar-data-generate'
 
 let currentDate = {
     year: new Date().getFullYear(),
