@@ -24,7 +24,7 @@ export default class Calendar {
   }
 
   getDays () {
-    let days = []
+    const days = []
     let dayNumber
     let name
     for (let index = 1; index <= 7; index++) {
@@ -38,33 +38,35 @@ export default class Calendar {
     this.sortDays(days)
     return days
   }
+
   getMonths () {
-    let months = []
+    const months = []
     for (let index = 0; index < 12; index++) {
-      let name = new Date(this.currentDate.year, index).toLocaleString(this.lang, { month: this.textFormat })
+      const name = new Date(this.currentDate.year, index).toLocaleString(this.lang, { month: this.textFormat })
       months.push({ index, name })
     }
     return months
   }
+
   getDates () {
-    let dates = []
+    const dates = []
     const dayCount = this.currentDate.year % 4 === 0 ? 367 : 366
     for (let index = 1; index < dayCount; index++) {
-      let date = new Date(this.currentDate.year, '00', index)
+      const date = new Date(this.currentDate.year, '00', index)
       dates.push(date)
     }
     return dates
   }
 
   showDates () {
-    let countDateYears = this.dates.findIndex(item => new Date(item).getMonth() === this.currentDate.month)
+    const countDateYears = this.dates.findIndex(item => new Date(item).getMonth() === this.currentDate.month)
     let daysOfMonth = this.dates.filter(item => new Date(item).getMonth() === this.currentDate.month)
     let dates = []
     let prevDay = this.firstDayOfMonth
     const prevYearLastOfMount = new Date(this.currentDate.year, '00', 1).getDate()
     if (this.currentDate.month === 0) {
       while (prevDay > 0) {
-        let date = new Date(this.currentDate.year, '00', prevYearLastOfMount - prevDay)
+        const date = new Date(this.currentDate.year, '00', prevYearLastOfMount - prevDay)
         dates.push({
           date: date,
           isDayInMouth: false
@@ -73,7 +75,7 @@ export default class Calendar {
       }
     } else {
       while (prevDay > 0 && countDateYears - prevDay > 0) {
-        let date = this.dates[countDateYears - prevDay]
+        const date = this.dates[countDateYears - prevDay]
         dates.push({
           date,
           isDayInMouth: false
@@ -90,7 +92,7 @@ export default class Calendar {
     let totalCount
     while (dates.length % 7) {
       totalCount = countDateYears + daysOfMonth.length + nextDay
-      let date = totalCount < 365 ? this.dates[countDateYears + daysOfMonth.length + nextDay] : new Date(this.currentDate.year + 1, '00', nextDay + 1)
+      const date = totalCount < 365 ? this.dates[countDateYears + daysOfMonth.length + nextDay] : new Date(this.currentDate.year + 1, '00', nextDay + 1)
       dates.push({
         date,
         isDayInMouth: false
@@ -108,7 +110,11 @@ export default class Calendar {
     }))
     return dates
   }
+
   dateCompare (date1, date2, compare) {
+    date1 = new Date(date1)
+    date2 = new Date(date2)
+
     date1.setHours(0, 0, 0, 0)
     date2.setHours(0, 0, 0, 0)
     switch (compare) {
@@ -120,6 +126,7 @@ export default class Calendar {
         break
     }
   }
+
   getFirstDayOfMonth () {
     /*
       start of week is by default sunday. 
@@ -131,6 +138,7 @@ export default class Calendar {
     }
     return parseInt(firstDay)
   }
+
   sortDays (days) {
     return days.sort((a, b) => {
       return a.dayNumber - b.dayNumber
@@ -142,8 +150,8 @@ export default class Calendar {
     //  for find out how many lines the calendar consists of,  divide all the month data count by days of week count
     const rows = Math.round(this.daysOfMonth.length / 7) 
     for (let index = 0; index < rows; index++) {
-      let countDateYears = this.dates.findIndex(item => new Date(item).getMonth() === this.currentDate.month)
-      let weekNo = Math.floor(countDateYears / 7) + index + 1
+      const countDateYears = this.dates.findIndex(item => new Date(item).getMonth() === this.currentDate.month)
+      const weekNo = Math.floor(countDateYears / 7) + index + 1
       weeks.push({
         index: weekNo,
         name: weekNo
