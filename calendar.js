@@ -48,7 +48,8 @@ export default class Calendar {
   }
   getDates () {
     let dates = []
-    for (let index = 1; index < 366; index++) {
+    const dayCount = this.currentDate.year % 4 === 0 ? 367 : 366
+    for (let index = 1; index < dayCount; index++) {
       let date = new Date(this.currentDate.year, '00', index)
       dates.push(date)
     }
