@@ -2,6 +2,16 @@
 Generate calendar data with javascript 📅
 
 ## Using
+```bash
+  yarn add calendar-data-generate
+```
+or
+
+```bash
+  npm install calendar-data-generate
+```
+
+
 ```javascript
 
 import Calendar from 'calendar-data-generate'
